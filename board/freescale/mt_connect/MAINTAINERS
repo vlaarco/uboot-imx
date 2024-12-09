@@ -1,0 +1,7 @@
+Multitracks Connect board
+M:	Muhammad Abdulfattah 
+S:	Maintained
+F:	board/freescale/mt_connect/
+F:	configs/mt_connect_defconfig
+
+
