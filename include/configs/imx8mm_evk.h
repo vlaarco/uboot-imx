@@ -39,8 +39,7 @@
 #ifdef CONFIG_DISTRO_DEFAULTS
 #define BOOT_TARGET_DEVICES(func) \
 	func(USB, usb, 0) \
-	func(MMC, mmc, 1) \
-	func(MMC, mmc, 2)
+	func(MMC, mmc, 1)
 
 #include <config_distro_bootcmd.h>
 #else
@@ -73,7 +72,7 @@
 	CFG_MFG_ENV_SETTINGS_DEFAULT \
 	"initrd_addr=0x43800000\0" \
 	"initrd_high=0xffffffffffffffff\0" \
-	"emmc_dev=2\0"\
+	"emmc_dev=0\0"\
 	"sd_dev=1\0" \
 
 /* Initial environment variables */
@@ -180,11 +179,7 @@
 
 #define CFG_MXC_UART_BASE		UART_BASE_ADDR(2)
 
-#ifdef CONFIG_TARGET_IMX8MM_DDR4_EVK
 #define CFG_SYS_FSL_USDHC_NUM	1
-#else
-#define CFG_SYS_FSL_USDHC_NUM	2
-#endif
 #define CFG_SYS_FSL_ESDHC_ADDR	0
 
 #define CFG_SYS_NAND_BASE           0x20000000
