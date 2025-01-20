@@ -296,7 +296,7 @@ bool SI5351_Init(void)
     SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4 + SI5351_MS1_OFFSET, SI5351_MSX_DIVBY4_MASK, 0x00);  // 52
 
     //******************************************************************************
-    // MS2 - Multisynth 2 - MCLK = 24.576MHz
+    // MS2 - Multisynth 2 - MCLK = 12.288MHz = LRCLK * N * B = 48KHz * 8 * 32
     //******************************************************************************
     // configure Multisynth 2 P1 parameters = (128 * a) + Floor(128 * b/c) - 512
     SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16 + SI5351_MS2_OFFSET, SI5351_MSX_P1_MASK, 0x00);    // 60
