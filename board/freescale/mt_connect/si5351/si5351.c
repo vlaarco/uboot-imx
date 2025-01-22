@@ -232,125 +232,125 @@ bool SI5351_Init(void)
     // f(vco) = (f(CLKIN) / CLKIN_DIV) * (a + b/c)
 
     // configure Multisynth NA P1 parameters = (128 * a) + Floor(128 * b/c) - 512
-    SI5351_WriteRegister(dev, SI5351_MSNA_P1_17_16, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MSNA_P1_15_8, 0x0E);
-    SI5351_WriteRegister(dev, SI5351_MSNA_P1_7_0, 0xAA);
+    SI5351_WriteRegister(dev, SI5351_MSNA_P1_17_16, 0x00);                               // 28
+    SI5351_WriteRegister(dev, SI5351_MSNA_P1_15_8, 0x0E);                                // 29
+    SI5351_WriteRegister(dev, SI5351_MSNA_P1_7_0, 0xAA);                                 // 30
     // configure Multisynth NA P2 parameters = (128 * b) - (c * Floor(128 * b/c))
-    SI5351_WriteRegisterWithMask(dev, SI5351_MSNA_P2_19_16, SI5351_MSX_P2_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MSNA_P2_15_8, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MSNA_P2_7_0, 0x02);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MSNA_P2_19_16, SI5351_MSX_P2_MASK, 0x00);   // 31
+    SI5351_WriteRegister(dev, SI5351_MSNA_P2_15_8, 0x00);                                // 32
+    SI5351_WriteRegister(dev, SI5351_MSNA_P2_7_0, 0x02);                                 // 33
     // configure Multisynth NA P3 parameters = c
-    SI5351_WriteRegisterWithMask(dev, SI5351_MSNA_P3_19_16, SI5351_MSX_P3_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MSNA_P3_15_8, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MSNA_P3_7_0, 0x03);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MSNA_P3_19_16, SI5351_MSX_P3_MASK, 0x00);   // 31
+    SI5351_WriteRegister(dev, SI5351_MSNA_P3_15_8, 0x00);                                // 26
+    SI5351_WriteRegister(dev, SI5351_MSNA_P3_7_0, 0x03);                                 // 27
 
     // configure Multisynth NB P1 parameters = (128 * a) + Floor(128 * b/c) - 512
-    SI5351_WriteRegister(dev, SI5351_MSNB_P1_17_16, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MSNB_P1_15_8, 0x0E);
-    SI5351_WriteRegister(dev, SI5351_MSNB_P1_7_0, 0x9C);
+    SI5351_WriteRegister(dev, SI5351_MSNB_P1_17_16, 0x00);                               // 36
+    SI5351_WriteRegister(dev, SI5351_MSNB_P1_15_8, 0x0E);                                // 37
+    SI5351_WriteRegister(dev, SI5351_MSNB_P1_7_0, 0x9C);                                 // 38
     // configure Multisynth NB P2 parameters = (128 * b) - (c * Floor(128 * b/c))
-    SI5351_WriteRegisterWithMask(dev, SI5351_MSNB_P2_19_16, SI5351_MSX_P2_MASK, 0x08);
-    SI5351_WriteRegister(dev, SI5351_MSNB_P2_15_8, 0x84);
-    SI5351_WriteRegister(dev, SI5351_MSNB_P2_7_0, 0xD4);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MSNB_P2_19_16, SI5351_MSX_P2_MASK, 0x08);   // 39
+    SI5351_WriteRegister(dev, SI5351_MSNB_P2_15_8, 0x84);                                // 40
+    SI5351_WriteRegister(dev, SI5351_MSNB_P2_7_0, 0xD4);                                 // 41
     // configure Multisynth NB P3 parameters = c
-    SI5351_WriteRegisterWithMask(dev, SI5351_MSNB_P3_19_16, SI5351_MSX_P3_MASK, 0xF0);
-    SI5351_WriteRegister(dev, SI5351_MSNB_P3_15_8, 0x42);
-    SI5351_WriteRegister(dev, SI5351_MSNB_P3_7_0, 0xBD);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MSNB_P3_19_16, SI5351_MSX_P3_MASK, 0xF0);   // 39
+    SI5351_WriteRegister(dev, SI5351_MSNB_P3_15_8, 0x42);                                // 34
+    SI5351_WriteRegister(dev, SI5351_MSNB_P3_7_0, 0xBD);                                 // 35
 
     //******************************************************************************
     // MS0 - Multisynth 0 - SCLK = 12.288MHz = LRCLK * N * B = 48KHz * 8 * 32
     //******************************************************************************
     // configure Multisynth 0 P1 parameters = (128 * a) + Floor(128 * b/c) - 512
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16, SI5351_MSX_P1_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P1_15_8, 0x22);
-    SI5351_WriteRegister(dev, SI5351_MS0_P1_7_0, 0x80);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16, SI5351_MSX_P1_MASK, 0x00);    // 44
+    SI5351_WriteRegister(dev, SI5351_MS0_P1_15_8, 0x22);                                 // 45
+    SI5351_WriteRegister(dev, SI5351_MS0_P1_7_0, 0x80);                                  // 46
     // configure Multisynth 0 P2 parameters = (128 * b) - (c * Floor(128 * b/c))
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P2_19_16, SI5351_MSX_P2_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P2_15_8, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P2_7_0, 0x00);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P2_19_16, SI5351_MSX_P2_MASK, 0x00);    // 47
+    SI5351_WriteRegister(dev, SI5351_MS0_P2_15_8, 0x00);                                 // 48
+    SI5351_WriteRegister(dev, SI5351_MS0_P2_7_0, 0x00);                                  // 49
     // configure Multisynth 0 P3 parameters = c
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P3_19_16, SI5351_MSX_P3_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P3_15_8, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P3_7_0, 0x01);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P3_19_16, SI5351_MSX_P3_MASK, 0x00);    // 47
+    SI5351_WriteRegister(dev, SI5351_MS0_P3_15_8, 0x00);                                 // 42
+    SI5351_WriteRegister(dev, SI5351_MS0_P3_7_0, 0x01);                                  // 43
     // configure Multisynth 0 parameters
-    SI5351_WriteRegisterWithMask(dev, SI5351_R0, SI5351_MSX_RX_DIV_MASK, 0x00);
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4, SI5351_MSX_DIVBY4_MASK, 0x00);
+    SI5351_WriteRegisterWithMask(dev, SI5351_R0, SI5351_MSX_RX_DIV_MASK, 0x00);          // 44
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4, SI5351_MSX_DIVBY4_MASK, 0x00);  // 44
 
     //******************************************************************************
     // MS1 - Multisynth 1 - LRCLK = 48KHz
     //******************************************************************************
     // configure Multisynth 1 P1 parameters = (128 * a) + Floor(128 * b/c) - 512
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16 + SI5351_MS1_OFFSET, SI5351_MSX_P1_MASK, 0x02);
-    SI5351_WriteRegister(dev, SI5351_MS0_P1_15_8 + SI5351_MS1_OFFSET, 0x46);
-    SI5351_WriteRegister(dev, SI5351_MS0_P1_7_0 + SI5351_MS1_OFFSET, 0x00);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16 + SI5351_MS1_OFFSET, SI5351_MSX_P1_MASK, 0x02);    // 52
+    SI5351_WriteRegister(dev, SI5351_MS0_P1_15_8 + SI5351_MS1_OFFSET, 0x46);                                 // 53
+    SI5351_WriteRegister(dev, SI5351_MS0_P1_7_0 + SI5351_MS1_OFFSET, 0x00);                                  // 54
     // configure Multisynth 1 P2 parameters = (128 * b) - (c * Floor(128 * b/c))
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P2_19_16 + SI5351_MS1_OFFSET, SI5351_MSX_P2_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P2_15_8 + SI5351_MS1_OFFSET, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P2_7_0 + SI5351_MS1_OFFSET, 0x00);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P2_19_16 + SI5351_MS1_OFFSET, SI5351_MSX_P2_MASK, 0x00);    // 55
+    SI5351_WriteRegister(dev, SI5351_MS0_P2_15_8 + SI5351_MS1_OFFSET, 0x00);                                 // 56
+    SI5351_WriteRegister(dev, SI5351_MS0_P2_7_0 + SI5351_MS1_OFFSET, 0x00);                                  // 57
     // configure Multisynth 1 P3 parameters = c
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P3_19_16 + SI5351_MS1_OFFSET, SI5351_MSX_P3_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P3_15_8 + SI5351_MS1_OFFSET, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P3_7_0 + SI5351_MS1_OFFSET, 0x01);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P3_19_16 + SI5351_MS1_OFFSET, SI5351_MSX_P3_MASK, 0x00);    // 55
+    SI5351_WriteRegister(dev, SI5351_MS0_P3_15_8 + SI5351_MS1_OFFSET, 0x00);                                 // 50
+    SI5351_WriteRegister(dev, SI5351_MS0_P3_7_0 + SI5351_MS1_OFFSET, 0x01);                                  // 51
     // configure Multisynth 1 parameters
-    SI5351_WriteRegisterWithMask(dev, SI5351_R0 + SI5351_MS1_OFFSET, SI5351_MSX_RX_DIV_MASK, 0x40);
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4 + SI5351_MS1_OFFSET, SI5351_MSX_DIVBY4_MASK, 0x00);
+    SI5351_WriteRegisterWithMask(dev, SI5351_R0 + SI5351_MS1_OFFSET, SI5351_MSX_RX_DIV_MASK, 0x40);          // 52
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4 + SI5351_MS1_OFFSET, SI5351_MSX_DIVBY4_MASK, 0x00);  // 52
 
     //******************************************************************************
-    // MS2 - Multisynth 2 - MCLK = 24.576MHz
+    // MS2 - Multisynth 2 - MCLK = 12.288MHz = LRCLK * N * B = 48KHz * 8 * 32
     //******************************************************************************
     // configure Multisynth 2 P1 parameters = (128 * a) + Floor(128 * b/c) - 512
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16 + SI5351_MS2_OFFSET, SI5351_MSX_P1_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P1_15_8 + SI5351_MS2_OFFSET, 0x10);
-    SI5351_WriteRegister(dev, SI5351_MS0_P1_7_0 + SI5351_MS2_OFFSET, 0x40);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16 + SI5351_MS2_OFFSET, SI5351_MSX_P1_MASK, 0x00);    // 60
+    SI5351_WriteRegister(dev, SI5351_MS0_P1_15_8 + SI5351_MS2_OFFSET, 0x22);                                 // 61
+    SI5351_WriteRegister(dev, SI5351_MS0_P1_7_0 + SI5351_MS2_OFFSET, 0x80);                                  // 62
     // configure Multisynth 2 P2 parameters = (128 * b) - (c * Floor(128 * b/c))
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P2_19_16 + SI5351_MS2_OFFSET, SI5351_MSX_P2_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P2_15_8 + SI5351_MS2_OFFSET, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P2_7_0 + SI5351_MS2_OFFSET, 0x00);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P2_19_16 + SI5351_MS2_OFFSET, SI5351_MSX_P2_MASK, 0x00);    // 63
+    SI5351_WriteRegister(dev, SI5351_MS0_P2_15_8 + SI5351_MS2_OFFSET, 0x00);                                 // 64
+    SI5351_WriteRegister(dev, SI5351_MS0_P2_7_0 + SI5351_MS2_OFFSET, 0x00);                                  // 65
     // configure Multisynth 2 P3 parameters = c
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P3_19_16 + SI5351_MS2_OFFSET, SI5351_MSX_P3_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P3_15_8 + SI5351_MS2_OFFSET, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P3_7_0 + SI5351_MS2_OFFSET, 0x02);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P3_19_16 + SI5351_MS2_OFFSET, SI5351_MSX_P3_MASK, 0x00);    // 63
+    SI5351_WriteRegister(dev, SI5351_MS0_P3_15_8 + SI5351_MS2_OFFSET, 0x00);                                 // 58
+    SI5351_WriteRegister(dev, SI5351_MS0_P3_7_0 + SI5351_MS2_OFFSET, 0x01);                                  // 59
     // configure Multisynth 2 parameters
-    SI5351_WriteRegisterWithMask(dev, SI5351_R0 + SI5351_MS2_OFFSET, SI5351_MSX_RX_DIV_MASK, 0x00);
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4 + SI5351_MS2_OFFSET, SI5351_MSX_DIVBY4_MASK, 0x00);
+    SI5351_WriteRegisterWithMask(dev, SI5351_R0 + SI5351_MS2_OFFSET, SI5351_MSX_RX_DIV_MASK, 0x00);          // 60
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4 + SI5351_MS2_OFFSET, SI5351_MSX_DIVBY4_MASK, 0x00);  // 60
 
     //******************************************************************************
     // MS3 - Multisynth 3 - FBCLK = 10MHz
     //******************************************************************************
     // configure Multisynth 3 P1 parameters = (128 * a) + Floor(128 * b/c) - 512
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16 + SI5351_MS3_OFFSET, SI5351_MSX_P1_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P1_15_8 + SI5351_MS3_OFFSET, 0x2A);
-    SI5351_WriteRegister(dev, SI5351_MS0_P1_7_0 + SI5351_MS3_OFFSET, 0xD9);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16 + SI5351_MS3_OFFSET, SI5351_MSX_P1_MASK, 0x00);    // 68
+    SI5351_WriteRegister(dev, SI5351_MS0_P1_15_8 + SI5351_MS3_OFFSET, 0x2A);                                 // 69
+    SI5351_WriteRegister(dev, SI5351_MS0_P1_7_0 + SI5351_MS3_OFFSET, 0xD9);                                  // 70
     // configure Multisynth 3 P2 parameters = (128 * b) - (c * Floor(128 * b/c))
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P2_19_16 + SI5351_MS3_OFFSET, SI5351_MSX_P2_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P2_15_8 + SI5351_MS3_OFFSET, 0x02);
-    SI5351_WriteRegister(dev, SI5351_MS0_P2_7_0 + SI5351_MS3_OFFSET, 0x37);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P2_19_16 + SI5351_MS3_OFFSET, SI5351_MSX_P2_MASK, 0x00);    // 71
+    SI5351_WriteRegister(dev, SI5351_MS0_P2_15_8 + SI5351_MS3_OFFSET, 0x02);                                 // 72
+    SI5351_WriteRegister(dev, SI5351_MS0_P2_7_0 + SI5351_MS3_OFFSET, 0x37);                                  // 73
     // configure Multisynth 3 P3 parameters = c
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P3_19_16 + SI5351_MS3_OFFSET, SI5351_MSX_P3_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P3_15_8 + SI5351_MS3_OFFSET, 0x02);
-    SI5351_WriteRegister(dev, SI5351_MS0_P3_7_0 + SI5351_MS3_OFFSET, 0x71);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P3_19_16 + SI5351_MS3_OFFSET, SI5351_MSX_P3_MASK, 0x00);    // 71
+    SI5351_WriteRegister(dev, SI5351_MS0_P3_15_8 + SI5351_MS3_OFFSET, 0x02);                                 // 66
+    SI5351_WriteRegister(dev, SI5351_MS0_P3_7_0 + SI5351_MS3_OFFSET, 0x71);                                  // 67
     // configure Multisynth 3 parameters
-    SI5351_WriteRegisterWithMask(dev, SI5351_R0 + SI5351_MS3_OFFSET, SI5351_MSX_RX_DIV_MASK, 0x00);
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4 + SI5351_MS3_OFFSET, SI5351_MSX_DIVBY4_MASK, 0x00);
+    SI5351_WriteRegisterWithMask(dev, SI5351_R0 + SI5351_MS3_OFFSET, SI5351_MSX_RX_DIV_MASK, 0x00);          // 68
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4 + SI5351_MS3_OFFSET, SI5351_MSX_DIVBY4_MASK, 0x00);  // 68
 
     //******************************************************************************
     // MS4 - Multisynth 4 - Ethernet = 25MHz
     //******************************************************************************
     // configure Multisynth 4 P1 parameters = (128 * a) + Floor(128 * b/c) - 512
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16 + SI5351_MS4_OFFSET, SI5351_MSX_P1_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P1_15_8 + SI5351_MS4_OFFSET, 0x10);
-    SI5351_WriteRegister(dev, SI5351_MS0_P1_7_0 + SI5351_MS4_OFFSET, 0x00);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16 + SI5351_MS4_OFFSET, SI5351_MSX_P1_MASK, 0x00);    // 76
+    SI5351_WriteRegister(dev, SI5351_MS0_P1_15_8 + SI5351_MS4_OFFSET, 0x10);                                 // 77
+    SI5351_WriteRegister(dev, SI5351_MS0_P1_7_0 + SI5351_MS4_OFFSET, 0x00);                                  // 78
     // configure Multisynth 4 P2 parameters = (128 * b) - (c * Floor(128 * b/c))
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P2_19_16 + SI5351_MS4_OFFSET, SI5351_MSX_P2_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P2_15_8 + SI5351_MS4_OFFSET, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P2_7_0 + SI5351_MS4_OFFSET, 0x00);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P2_19_16 + SI5351_MS4_OFFSET, SI5351_MSX_P2_MASK, 0x00);    // 79
+    SI5351_WriteRegister(dev, SI5351_MS0_P2_15_8 + SI5351_MS4_OFFSET, 0x00);                                 // 80
+    SI5351_WriteRegister(dev, SI5351_MS0_P2_7_0 + SI5351_MS4_OFFSET, 0x00);                                  // 81
     // configure Multisynth 4 P3 parameters = c
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P3_19_16 + SI5351_MS4_OFFSET, SI5351_MSX_P3_MASK, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P3_15_8 + SI5351_MS4_OFFSET, 0x00);
-    SI5351_WriteRegister(dev, SI5351_MS0_P3_7_0 + SI5351_MS4_OFFSET, 0x01);
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P3_19_16 + SI5351_MS4_OFFSET, SI5351_MSX_P3_MASK, 0x00);    // 79
+    SI5351_WriteRegister(dev, SI5351_MS0_P3_15_8 + SI5351_MS4_OFFSET, 0x00);                                 // 74
+    SI5351_WriteRegister(dev, SI5351_MS0_P3_7_0 + SI5351_MS4_OFFSET, 0x01);                                  // 75
     // configure Multisynth 4 parameters
-    SI5351_WriteRegisterWithMask(dev, SI5351_R0 + SI5351_MS4_OFFSET, SI5351_MSX_RX_DIV_MASK, 0x00);
-    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4 + SI5351_MS4_OFFSET, SI5351_MSX_DIVBY4_MASK, 0x00);
+    SI5351_WriteRegisterWithMask(dev, SI5351_R0 + SI5351_MS4_OFFSET, SI5351_MSX_RX_DIV_MASK, 0x00);          // 76
+    SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4 + SI5351_MS4_OFFSET, SI5351_MSX_DIVBY4_MASK, 0x00);  // 76
 
     // vcxo parameters = 1.03 * (128 * a + b/1e6) * APR
     SI5351_WriteRegister(dev, SI5351_VCXO_21_16, 0x0F);
