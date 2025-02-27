@@ -120,10 +120,6 @@ static int setup_fec(void)
 		(struct iomuxc_gpr_base_regs *)IOMUXC_GPR_BASE_ADDR;
 
 	imx_iomux_v3_setup_multiple_pads(fec_pads, ARRAY_SIZE(fec_pads));
-	gpio_request(IMX_GPIO_NR(5, 4), "ENET PHY Reset");
-	gpio_direction_output(IMX_GPIO_NR(5, 4) , 0);
-	mdelay(20);
-	gpio_set_value(IMX_GPIO_NR(5, 4), 1);
 
 	/* Use 125M anatop REF_CLK1 for ENET1, not from external */
 	clrsetbits_le32(&gpr->gpr[1], 0x2000, 0);
@@ -194,6 +190,12 @@ int board_late_init(void)
 	{
 		printf("SI5351 init failed\n");
 	}
+
+	gpio_request(IMX_GPIO_NR(5, 4), "ENET PHY Reset");
+	gpio_direction_output(IMX_GPIO_NR(5, 4) , 0);
+	mdelay(20);
+	gpio_set_value(IMX_GPIO_NR(5, 4), 1);
+
 	return 0;
 }
 
