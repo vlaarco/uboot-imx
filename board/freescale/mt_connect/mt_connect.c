@@ -193,7 +193,7 @@ int board_late_init(void)
 
 	gpio_request(IMX_GPIO_NR(5, 4), "ENET PHY Reset");
 	gpio_direction_output(IMX_GPIO_NR(5, 4) , 0);
-	mdelay(20);
+	mdelay(1);
 	gpio_set_value(IMX_GPIO_NR(5, 4), 1);
 
 	return 0;
