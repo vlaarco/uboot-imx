@@ -30,6 +30,7 @@
 #define SI5351_DEVICE_STATUS        0
 
 // control registers
+#define SI5351_INT_STATUS_MASK      2
 #define SI5351_OUTPUT_ENABLE        3
 #define SI5351_OEB_PIN_ENABLE       9
 #define SI5351_PLL_INPUT_SOURCE     15
@@ -206,6 +207,9 @@ bool SI5351_Init(void)
         }
     }
 
+    // configure Interrupt Status Mask
+    SI5351_WriteRegister(dev, SI5351_INT_STATUS_MASK, 0x13);
+
     // configure Output Enable and OEB pin enable control (OEB enabled but OEB pin pulled low)
     SI5351_WriteRegister(dev, SI5351_OUTPUT_ENABLE, 0xFF);
     SI5351_WriteRegister(dev, SI5351_OEB_PIN_ENABLE, 0x00);
@@ -258,7 +262,7 @@ bool SI5351_Init(void)
     SI5351_WriteRegister(dev, SI5351_MSNB_P3_7_0, 0xBD);                                 // 35
 
     //******************************************************************************
-    // MS0 - Multisynth 0 - SCLK = 12.288MHz = LRCLK * N * B = 48KHz * 8 * 32
+    // MS0 - Multisynth 0 - SCLK = 12.288MHz
     //******************************************************************************
     // configure Multisynth 0 P1 parameters = (128 * a) + Floor(128 * b/c) - 512
     SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16, SI5351_MSX_P1_MASK, 0x00);    // 44
@@ -296,7 +300,7 @@ bool SI5351_Init(void)
     SI5351_WriteRegisterWithMask(dev, SI5351_MS0_DIVBY4 + SI5351_MS1_OFFSET, SI5351_MSX_DIVBY4_MASK, 0x00);  // 52
 
     //******************************************************************************
-    // MS2 - Multisynth 2 - MCLK = 24.576MHz = LRCLK * 2 * N * B = 48KHz * 2 * 8 * 32
+    // MS2 - Multisynth 2 - MCLK = 24.576MHz
     //******************************************************************************
     // configure Multisynth 2 P1 parameters = (128 * a) + Floor(128 * b/c) - 512
     SI5351_WriteRegisterWithMask(dev, SI5351_MS0_P1_17_16 + SI5351_MS2_OFFSET, SI5351_MSX_P1_MASK, 0x00);    // 60
@@ -362,6 +366,9 @@ bool SI5351_Init(void)
 
     // disable fanout
     SI5351_WriteRegister(dev, SI5351_FANOUT_ENABLE, 0xC0);
+
+    // perform soft reset
+    SI5351_WriteRegister(dev, 177, 0xAC);
 
     // configure output enable control (enable CLK0-CLK4)
     SI5351_WriteRegister(dev, SI5351_OUTPUT_ENABLE, 0xE0);
