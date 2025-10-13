@@ -202,7 +202,7 @@ int board_late_init(void)
 	mdelay(1);
 	gpio_set_value(IMX_GPIO_NR(5, 4), 1);
 
-	// BMS (Bootloader Mode Selection)
+	// UBC (U-Boot Console) Mode pins
 	imx_iomux_v3_setup_multiple_pads(sai1_pads, ARRAY_SIZE(sai1_pads));
 	gpio_request(IMX_GPIO_NR(4, 2), "BMS 4-2");
 	gpio_direction_input(IMX_GPIO_NR(4, 2));
