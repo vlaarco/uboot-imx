@@ -77,7 +77,7 @@ bool AA3CP_Init(void)
     // get the bus
     if (uclass_get_device_by_seq(UCLASS_I2C, AA3CP_DEVICE, &bus) != 0)
     {
-        // disable the AA3CP
+        // error, disable the AA3CP
         gpio_set_value(IMX_GPIO_NR(1, 1) , 0);
         return false;
     }
@@ -88,9 +88,16 @@ bool AA3CP_Init(void)
     // get the device
     if (dm_i2c_probe(bus, AA3CP_I2C_ADDRESS, AA3CP_DEVICE, &dev) != 0)
     {
-        // disable the AA3CP
-        gpio_set_value(IMX_GPIO_NR(1, 1) , 0);
-        return false;
+        // error, AA3CP might have been sleeping
+        mdelay(2);
+
+        // try to get the device again
+        if (dm_i2c_probe(bus, AA3CP_I2C_ADDRESS, AA3CP_DEVICE, &dev) != 0)
+        {
+            // error, disable the AA3CP
+            gpio_set_value(IMX_GPIO_NR(1, 1) , 0);
+            return false;
+        }
     }
 
     // mandatory 2ms delay
