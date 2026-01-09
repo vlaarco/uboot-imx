@@ -20,6 +20,7 @@
 #include <i2c.h>
 #include <asm/io.h>
 #include <usb.h>
+#include <aa3cp/aa3cp.h>
 #include <si5351/si5351.h>
 #include <linux/delay.h>
 
@@ -194,6 +195,15 @@ int board_late_init(void)
 	else
 	{
 		printf("SI5351 init failed\n");
+	}
+
+	if (true == AA3CP_Init())
+	{
+		printf("AA3CP init success\n");
+	}
+	else
+	{
+		printf("AA3CP init failed\n");
 	}
 
 	// ENET
