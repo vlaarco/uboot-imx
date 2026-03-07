@@ -11,6 +11,8 @@
 #include <asm/arch/imx-regs.h>
 #include "imx_env.h"
 
+#define CONFIG_MT_UBOOT_VERSION "0.1.0"
+
 #define UBOOT_ITB_OFFSET			0x57C00
 #define FSPI_CONF_BLOCK_SIZE		0x1000
 #define UBOOT_ITB_OFFSET_FSPI  \

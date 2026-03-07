@@ -188,6 +188,8 @@ int board_late_init(void)
 		env_set("board_rev", "iMX8MM");
 	}
 	
+	env_set("uboot", CONFIG_MT_UBOOT_VERSION);
+
 	if (true == SI5351_Init())
 	{
 		printf("SI5351 init success\n");
